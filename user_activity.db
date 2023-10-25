@@ -1,0 +1,16 @@
+import sqlite3
+
+conn = sqlite3.connect('user_activity.db')
+c = conn.cursor()
+
+# Create a table to store user records
+c.execute('''
+CREATE TABLE IF NOT EXISTS user_activity (
+    user_id TEXT PRIMARY KEY,
+    query_count INTEGER,
+    last_query_date TEXT
+)
+''')
+
+conn.commit()
+conn.close()
