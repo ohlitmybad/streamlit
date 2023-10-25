@@ -6,18 +6,16 @@ from datetime import datetime
 st.set_page_config(page_title='DataMB Chat ⚽')
 st.title('DataMB Chat ⚽')
 
-# Connect to the SQLite database
-conn = sqlite3.connect('user_activity.db')
-c = conn.cursor()
-
 def load_csv():
     df = pd.read_csv("data.csv")
     return df
 
 def generate_response(input_query):
-    # Check if the user has reached the query limit for the day
     user_id = st.session_state.user_id
     current_date = datetime.now().strftime('%Y-%m-%d')
+
+    conn = sqlite3.connect('user_activity.db')
+    c = conn.cursor()
 
     # Retrieve user activity data from the database
     c.execute('SELECT query_count, last_query_date FROM user_activity WHERE user_id=?', (user_id,))
@@ -49,6 +47,7 @@ def generate_response(input_query):
                   (user_id, 1, current_date))
 
     conn.commit()
+    conn.close()
     st.success(response)
 
 OPAK_KEY = "QOxvASrYaXeRFFHgajIdT3BlbkFJkQ37OFVOZVOc8t07WJI5"
