@@ -25,8 +25,8 @@ def generate_response(input_query):
     # Your OpenAI-related code here
     # ...
 
-OPAK_KEY = "QOxvASrYaXeRFFHgajIdT3BlbkFJkQ37OFVOZVOc8t07WJI5"
-openai_api_key = "sk-" + OPAK_KEY
+    OPAK_KEY = "QOxvASrYaXeRFFHgajIdT3BlbkFJkQ37OFVOZVOc8t07WJI5"
+    openai_api_key = "sk-" + OPAK_KEY
 
 query_text = st.text_input('Enter your query:', placeholder='Enter query here ...')
 username = st.text_input('Username:')
