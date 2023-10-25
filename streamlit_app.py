@@ -10,7 +10,7 @@ st.set_page_config(page_title='DataMB Chat ⚽')
 st.title('DataMB Chat ⚽')
 
 # Define the rate-limiting settings
-MAX_QUERIES_PER_DAY = 10  # Adjust this value according to your needs
+MAX_QUERIES_PER_DAY = 4  # Adjust this value according to your needs
 DB_FILE = "user_query_counts.db"
 
 def create_connection():
