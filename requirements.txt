@@ -5,3 +5,4 @@ pandas
 tabulate
 matplotlib
 seaborn
+sqlite3
