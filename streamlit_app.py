@@ -20,15 +20,10 @@ def generate_response(input_query):
     response = agent.run(input_query)
     return st.success(response)
 
+OPAK_KEY = "QOxvASrYaXeRFFHgajIdT3BlbkFJkQ37OFVOZVOc8t07WJI5"
+openai_api_key = "sk-" + OPAK_KEY
 
-openai_api_key = st.text_input('OpenAI API Key', type='password')
 
 
-query_text = st.text_input('Enter your query:', placeholder='Enter query here ...')
-
-if not openai_api_key.startswith('sk-'):
-    st.warning('Please enter your OpenAI API key!', icon='⚠')
-
-if openai_api_key.startswith('sk-'):
-    st.header('Output')
-    generate_response(query_text)
+st.header('Output')
+generate_response(query_text)
