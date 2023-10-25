@@ -12,7 +12,7 @@ def load_csv():
     return df
 
 def generate_response(input_query):
-    llm = ChatOpenAI(model_name='gpt-3.5-turbo-0613', temperature=0, openai_api_key=openai_api_key)
+    llm = ChatOpenAI(model_name='gpt-3.5-turbo-0613', temperature=0.8, openai_api_key=openai_api_key)
     df = load_csv()
     # Create Pandas DataFrame Agent
     agent = create_pandas_dataframe_agent(llm, df, verbose=True, agent_type=AgentType.OPENAI_FUNCTIONS)
