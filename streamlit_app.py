@@ -32,8 +32,9 @@ def generate_response(input_query):
     # Perform Query using the Agent
     response = agent.run(input_query)
     return st.success(response)
-    OPAK_KEY = "QOxvASrYaXeRFFHgajIdT3BlbkFJkQ37OFVOZVOc8t07WJI5"
-    openai_api_key = "sk-" + OPAK_KEY
+
+OPAK_KEY = "QOxvASrYaXeRFFHgajIdT3BlbkFJkQ37OFVOZVOc8t07WJI5"
+openai_api_key = "sk-" + OPAK_KEY
 
 username = st.text_input('Username:')
 password = st.text_input('Password:', type="password")
