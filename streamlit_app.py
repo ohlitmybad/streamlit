@@ -28,9 +28,9 @@ def generate_response(input_query):
     OPAK_KEY = "QOxvASrYaXeRFFHgajIdT3BlbkFJkQ37OFVOZVOc8t07WJI5"
     openai_api_key = "sk-" + OPAK_KEY
 
-query_text = st.text_input('Enter your query:', placeholder='Enter query here ...')
 username = st.text_input('Username:')
 password = st.text_input('Password:', type="password")
+query_text = st.text_input('Enter your query:', placeholder='Enter query here ...')
 
 if st.button('Login'):
     if authenticate_user(username, password):
@@ -39,4 +39,3 @@ if st.button('Login'):
     else:
         st.error('Authentication failed. Please check your credentials.')
 
-st.write("Note: Only authorized users can access this app.")
