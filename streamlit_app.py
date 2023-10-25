@@ -40,8 +40,7 @@ username = st.text_input('Username:')
 password = st.text_input('Password:', type="password")
 query_text = st.text_input('Enter your query:', placeholder='Enter query here ...')
 
-if st.button('Login'):
-    if authenticate_user(username, password):
+if authenticate_user(username, password):
         st.header('Output')
         generate_response(query_text)
     else:
