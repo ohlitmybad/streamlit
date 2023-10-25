@@ -22,9 +22,13 @@ def load_csv():
     return df
 
 def generate_response(input_query):
-    # Your OpenAI-related code here
-    # ...
-
+    llm = ChatOpenAI(model_name='gpt-3.5-turbo-0613', temperature=0, openai_api_key=openai_api_key)
+    df = load_csv()
+    # Create Pandas DataFrame Agent
+    agent = create_pandas_dataframe_agent(llm, df, verbose=True, agent_type=AgentType.OPENAI_FUNCTIONS)
+    # Perform Query using the Agent
+    response = agent.run(input_query)
+    return st.success(response)
     OPAK_KEY = "QOxvASrYaXeRFFHgajIdT3BlbkFJkQ37OFVOZVOc8t07WJI5"
     openai_api_key = "sk-" + OPAK_KEY
 
