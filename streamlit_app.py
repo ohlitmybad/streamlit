@@ -3,6 +3,7 @@ import pandas as pd
 from langchain.chat_models import ChatOpenAI
 from langchain.agents import create_pandas_dataframe_agent
 from langchain.agents.agent_types import AgentType
+import sqlite3
 import datetime
 
 st.set_page_config(page_title='DataMB Chat ⚽')
@@ -10,9 +11,26 @@ st.title('DataMB Chat ⚽')
 
 # Define the rate-limiting settings
 MAX_QUERIES_PER_DAY = 10  # Adjust this value according to your needs
+DB_FILE = "user_query_counts.db"
 
-# Define a dictionary to store the query counts for each user
-user_query_counts = {}
+def create_connection():
+    conn = sqlite3.connect(DB_FILE)
+    return conn
+
+def load_query_count(user_id):
+    conn = create_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT query_count FROM users WHERE user_id = ?", (user_id,))
+    row = cursor.fetchone()
+    if row:
+        return row[0]
+    return 0
+
+def update_query_count(user_id, query_count):
+    conn = create_connection()
+    cursor = conn.cursor()
+    cursor.execute("INSERT OR REPLACE INTO users (user_id, query_count) VALUES (?, ?)", (user_id, query_count))
+    conn.commit()
 
 def load_csv():
     df = pd.read_csv("data.csv")
@@ -21,13 +39,10 @@ def load_csv():
 def generate_response(input_query):
     user_id = st.session_state.user_id
 
-    # Check if the user has exceeded their rate limit
-    if user_id not in user_query_counts:
-        user_query_counts[user_id] = 1
-    else:
-        user_query_counts[user_id] += 1
+    # Load the user's current query count
+    query_count = load_query_count(user_id)
 
-    if user_query_counts[user_id] > MAX_QUERIES_PER_DAY:
+    if query_count >= MAX_QUERIES_PER_DAY:
         st.error(f"Rate limit exceeded. You can make {MAX_QUERIES_PER_DAY} queries per day.")
         return
 
@@ -39,6 +54,11 @@ def generate_response(input_query):
     
     # Perform Query using the Agent
     response = agent.run(input_query)
+
+    # Update the query count and store it in the database
+    query_count += 1
+    update_query_count(user_id, query_count)
+
     st.success(response)
 
 OPAK_KEY = "QOxvASrYaXeRFFHgajIdT3BlbkFJkQ37OFVOZVOc8t07WJI5"
@@ -48,13 +68,11 @@ openai_api_key = "sk-" + OPAK_KEY
 if 'user_id' not in st.session_state:
     st.session_state.user_id = None
 
-# Reset the user's query count at the start of each day
-today = datetime.date.today()
-if 'last_reset_date' not in st.session_state:
-    st.session_state.last_reset_date = today
-elif st.session_state.last_reset_date < today:
-    user_query_counts = {}
-    st.session_state.last_reset_date = today
+# Create the users table in the database if it doesn't exist
+conn = create_connection()
+cursor = conn.cursor()
+cursor.execute("CREATE TABLE IF NOT EXISTS users (user_id TEXT PRIMARY KEY, query_count INTEGER)")
+conn.commit()
 
 query_text = st.text_input('Enter your query:', placeholder='Enter query here ...')
 
