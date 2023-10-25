@@ -36,7 +36,7 @@ def update_query_counts(query_counts):
     return query_counts
 
 # Function to check if a user has reached their rolling monthly query limit
-def is_query_limit_reached(username, query_counts, limit=1000):
+def is_query_limit_reached(username, query_counts, limit=3):
     if username in query_counts:
         return query_counts[username]['count'] >= limit
     return False
