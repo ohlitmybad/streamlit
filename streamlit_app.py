@@ -4,6 +4,7 @@ import os
 from langchain.chat_models import ChatOpenAI
 from langchain.agents import create_pandas_dataframe_agent
 from langchain.agents.agent_types import AgentType
+from datetime import datetime
 
 # Define the path to the users.txt file
 USERS_FILE = 'users.txt'
@@ -20,9 +21,20 @@ def authenticate_user(username, password):
 st.set_page_config(page_title='DataMB Chat ⚽')
 st.title('DataMB Chat ⚽')
 
-def load_csv():
-    df = pd.read_csv("data.csv")
-    return df
+# Function to load user data and reset query count daily
+def load_user_data():
+    data = {}
+    today = datetime.now().date()
+    with open("user_data.txt", "a+") as user_data_file:
+        user_data_file.seek(0)
+        for line in user_data_file:
+            user, date, count = line.strip().split(':')
+            if today != datetime.strptime(date, "%Y-%m-%d").date():
+                # Reset query count for a new day
+                data[user] = 0
+            else:
+                data[user] = int(count)
+    return data
 
 def generate_response(input_query):
     llm = ChatOpenAI(model_name='gpt-3.5-turbo-0613', temperature=0, openai_api_key=openai_api_key)
@@ -40,9 +52,17 @@ username = st.text_input('Username:')
 password = st.text_input('Password:', type="password")
 query_text = st.text_input('Enter your query:', placeholder='Enter query here ...')
 
+user_data = load_user_data()
+
 if authenticate_user(username, password):
+    if user_data.get(username, 0) < 10:
         st.header('Output')
         generate_response(query_text)
+        # Update the query count for the user
+        user_data[username] = user_data.get(username, 0) + 1
+        with open("user_data.txt", "a") as user_data_file:
+            user_data_file.write(f"{username}:{datetime.now().date()}:{user_data[username]}\n")
+    else:
+        st.error('Query limit (10 queries per day) reached for this user.')
 else:
     st.error('Authentication failed. Please check your credentials.')
-
