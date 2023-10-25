@@ -23,7 +23,7 @@ def generate_response(input_query):
 OPAK_KEY = "QOxvASrYaXeRFFHgajIdT3BlbkFJkQ37OFVOZVOc8t07WJI5"
 openai_api_key = "sk-" + OPAK_KEY
 
-
+query_text = st.text_input('Enter your query:', placeholder='Enter query here ...')
 
 st.header('Output')
 generate_response(query_text)
