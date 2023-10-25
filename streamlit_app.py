@@ -41,7 +41,7 @@ def save_query_counts(query_counts):
             count_file.write(f"{user}:{count}\n")
 
 # Function to check if a user has reached their query limit
-def is_query_limit_reached(username, query_counts, limit=3):
+def is_query_limit_reached(username, query_counts, limit=2):
     return query_counts.get(username, 0) >= limit
 
 st.set_page_config(page_title='DataMB Chat ⚽')
