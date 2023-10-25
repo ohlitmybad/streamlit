@@ -20,17 +20,19 @@ def authenticate_user(username, password):
                 return True
     return False
 
-# Function to load user query counts
-# Function to load user query counts
+
 def load_query_counts():
     if os.path.exists(QUERY_COUNT_FILE):
         with open(QUERY_COUNT_FILE, 'r') as count_file:
             query_counts = {}
             for line in count_file:
-                user, count = line.strip().split(':')
-                query_counts[user] = int(count)
+                parts = line.strip().split(':')
+                if len(parts) == 2:
+                    user, count = parts
+                    query_counts[user] = int(count)
             return query_counts
     return {}
+
 
 # Function to save user query counts
 def save_query_counts(query_counts):
