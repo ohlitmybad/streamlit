@@ -4,10 +4,12 @@ import os
 from langchain.chat_models import ChatOpenAI
 from langchain.agents import create_pandas_dataframe_agent
 from langchain.agents.agent_types import AgentType
-from datetime import datetime
 
 # Define the path to the users.txt file
 USERS_FILE = 'users.txt'
+
+# Define a file to store user query counts
+QUERY_COUNT_FILE = 'query_counts.txt'
 
 # Function to check user credentials
 def authenticate_user(username, password):
@@ -18,23 +20,33 @@ def authenticate_user(username, password):
                 return True
     return False
 
+# Function to load user query counts
+def load_query_counts():
+    if os.path.exists(QUERY_COUNT_FILE):
+        with open(QUERY_COUNT_FILE, 'r') as count_file:
+            query_counts = {}
+            for line in count_file:
+                user, count = line.strip().split(':')
+                query_counts[user] = int(count)
+            return query_counts
+    return {}
+
+# Function to save user query counts
+def save_query_counts(query_counts):
+    with open(QUERY_COUNT_FILE, 'w') as count_file:
+        for user, count in query_counts.items():
+            count_file.write(f"{user}:{count}\n")
+
+# Function to check if a user has reached their query limit
+def is_query_limit_reached(username, query_counts, limit=10):
+    return query_counts.get(username, 0) >= limit
+
 st.set_page_config(page_title='DataMB Chat ⚽')
 st.title('DataMB Chat ⚽')
 
-# Function to load user data and reset query count daily
-def load_user_data():
-    data = {}
-    today = datetime.now().date()
-    with open("user_data.txt", "a+") as user_data_file:
-        user_data_file.seek(0)
-        for line in user_data_file:
-            user, date, count = line.strip().split(':')
-            if today != datetime.strptime(date, "%Y-%m-%d").date():
-                # Reset query count for a new day
-                data[user] = 0
-            else:
-                data[user] = int(count)
-    return data
+def load_csv():
+    df = pd.read_csv("data.csv")
+    return df
 
 def generate_response(input_query):
     llm = ChatOpenAI(model_name='gpt-3.5-turbo-0613', temperature=0, openai_api_key=openai_api_key)
@@ -52,16 +64,15 @@ username = st.text_input('Username:')
 password = st.text_input('Password:', type="password")
 query_text = st.text_input('Enter your query:', placeholder='Enter query here ...')
 
-user_data = load_user_data()
+query_counts = load_query_counts()
 
 if authenticate_user(username, password):
-    if user_data.get(username, 0) < 10:
+    if not is_query_limit_reached(username, query_counts):
         st.header('Output')
         generate_response(query_text)
         # Update the query count for the user
-        user_data[username] = user_data.get(username, 0) + 1
-        with open("user_data.txt", "a") as user_data_file:
-            user_data_file.write(f"{username}:{datetime.now().date()}:{user_data[username]}\n")
+        query_counts[username] = query_counts.get(username, 0) + 1
+        save_query_counts(query_counts)
     else:
         st.error('Query limit (10 queries per day) reached for this user.')
 else:
