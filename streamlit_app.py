@@ -43,6 +43,6 @@ query_text = st.text_input('Enter your query:', placeholder='Enter query here ..
 if authenticate_user(username, password):
         st.header('Output')
         generate_response(query_text)
-    else:
-        st.error('Authentication failed. Please check your credentials.')
+else:
+    st.error('Authentication failed. Please check your credentials.')
 
