@@ -21,6 +21,7 @@ def authenticate_user(username, password):
     return False
 
 # Function to load user query counts
+# Function to load user query counts
 def load_query_counts():
     if os.path.exists(QUERY_COUNT_FILE):
         with open(QUERY_COUNT_FILE, 'r') as count_file:
