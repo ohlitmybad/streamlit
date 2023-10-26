@@ -40,11 +40,17 @@ def load_query_counts():
 def save_query_counts(query_counts):
     with open(QUERY_COUNT_FILE, 'w') as count_file:
         today = datetime.date.today().isoformat()
-        for user, count in query_counts.items():
-            count_file.write(f"{user}:{today}:{count}\n")
+        for user, user_count in query_counts.items():
+            if user_count['date'] == today:
+                count_file.write(f"{user}:{today}:{user_count['count']}\n")
 
 def is_query_limit_reached(username, query_counts, limit=DAILY_QUERY_LIMIT):
-    return query_counts.get(username, 0) >= limit
+    today = datetime.date.today().isoformat()
+    user_count = query_counts.get(username, {})
+    
+    if 'date' in user_count and user_count['date'] == today:
+        return user_count.get('count', 0) >= limit
+    return False
 
 st.set_page_config(page_title='DataMB Chat ⚽')
 st.title('DataMB Chat ⚽')
