@@ -28,23 +28,20 @@ def load_query_counts():
     if os.path.exists(QUERY_COUNT_FILE):
         with open(QUERY_COUNT_FILE, 'r') as count_file:
             query_counts = {}
-            today = datetime.date.today().isoformat()
             for line in count_file:
-                parts = line.strip().split(':')
-                if len(parts) == 3:
-                    user, date, count = parts
-                    if user not in query_counts:
-                        query_counts[user] = {}
-                    query_counts[user][date] = int(count)
+                user, date, count = line.strip().split(':')
+                if user not in query_counts:
+                    query_counts[user] = {}
+                query_counts[user][date] = int(count)
             return query_counts
     return {}
 
 def save_query_counts(query_counts):
     with open(QUERY_COUNT_FILE, 'w') as count_file:
-        today = datetime.date.today().isoformat()
         for user, data in query_counts.items():
             for date, count in data.items():
                 count_file.write(f"{user}:{date}:{count}\n")
+
 
 
 
