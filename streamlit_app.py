@@ -29,12 +29,13 @@ def load_query_counts():
             query_counts = {}
             today = datetime.date.today().isoformat()
             for line in count_file:
-                user, date, count = line.strip().split(':')
-                if date == today:
-                    query_counts[user] = int(count)
+                parts = line.strip().split(':')
+                if len(parts) == 3:
+                    user, date, count = parts
+                    if date == today:
+                        query_counts[user] = int(count)
             return query_counts
     return {}
-
 
 # Function to save user query counts
 def save_query_counts(query_counts):
