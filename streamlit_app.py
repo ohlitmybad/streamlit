@@ -13,15 +13,15 @@ USERS_FILE = 'users.txt'
 # Define a file to store user query counts
 QUERY_COUNT_FILE = 'query_counts.txt'
 
+DAILY_QUERY_LIMIT = 25
+
 def user_exists(username):
-    with open('users.txt', 'r') as users_file:
+    with open(USERS_FILE, 'r') as users_file:
         for line in users_file:
             user, _ = line.strip().split(':')
             if user == username:
                 return True
     return False
-
-
 
 def load_query_counts():
     if os.path.exists(QUERY_COUNT_FILE):
@@ -29,22 +29,19 @@ def load_query_counts():
             query_counts = {}
             today = datetime.date.today().isoformat()
             for line in count_file:
-                parts = line.strip().split(':')
-                if len(parts) == 3:
-                    user, date, count = parts
-                    if date == today:
-                        query_counts[user] = int(count)
+                user, date, count = line.strip().split(':')
+                if date == today:
+                    query_counts[user] = int(count)
             return query_counts
     return {}
 
-# Function to save user query counts
 def save_query_counts(query_counts):
     with open(QUERY_COUNT_FILE, 'w') as count_file:
+        today = datetime.date.today().isoformat()
         for user, count in query_counts.items():
-            count_file.write(f"{user}:{count}\n")
+            count_file.write(f"{user}:{today}:{count}\n")
 
-# Function to check if a user has reached their query limit
-def is_query_limit_reached(username, query_counts, limit=2):
+def is_query_limit_reached(username, query_counts, limit=DAILY_QUERY_LIMIT):
     return query_counts.get(username, 0) >= limit
 
 st.set_page_config(page_title='DataMB Chat ⚽')
