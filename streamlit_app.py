@@ -43,14 +43,14 @@ def save_query_counts(query_counts):
         for user, count in query_counts.items():
             count_file.write(f"{user}:{today}:{count}\n")
 
-
 def is_query_limit_reached(username, query_counts, limit=DAILY_QUERY_LIMIT):
     today = datetime.date.today().isoformat()
-    user_count = query_counts.get(username, {})
+    user_data = query_counts.get(username, {})
     
-    if 'date' in user_count and user_count['date'] == today:
-        return user_count.get('count', 0) >= limit
+    if 'date' in user_data and user_data['date'] == today:
+        return user_data.get('count', 0) >= limit
     return False
+
 
 st.set_page_config(page_title='DataMB Chat ⚽')
 st.title('DataMB Chat ⚽')
