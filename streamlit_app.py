@@ -91,6 +91,6 @@ if user_exists(username):
             save_query_counts(query_counts)
 
     else:
-        st.error('Query limit (25 successful queries per day) reached for this user.')
+        st.error('Daily query limit (25) reached for this user.')
 else:
     st.error('User not found. Please check your username.')
