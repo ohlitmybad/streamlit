@@ -13,7 +13,7 @@ USERS_FILE = 'users.txt'
 # Define a file to store user query counts
 QUERY_COUNT_FILE = 'query_counts.txt'
 
-DAILY_QUERY_LIMIT = 25
+DAILY_QUERY_LIMIT = 2
 
 def user_exists(username):
     with open(USERS_FILE, 'r') as users_file:
