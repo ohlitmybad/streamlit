@@ -4,6 +4,8 @@ import os
 from langchain.chat_models import ChatOpenAI
 from langchain.agents import create_pandas_dataframe_agent
 from langchain.agents.agent_types import AgentType
+import datetime
+
 
 # Define the path to the users.txt file
 USERS_FILE = 'users.txt'
@@ -20,14 +22,15 @@ def user_exists(username):
     return False
 
 
+
 def load_query_counts():
     if os.path.exists(QUERY_COUNT_FILE):
         with open(QUERY_COUNT_FILE, 'r') as count_file:
             query_counts = {}
+            today = datetime.date.today().isoformat()
             for line in count_file:
-                parts = line.strip().split(':')
-                if len(parts) == 2:
-                    user, count = parts
+                user, date, count = line.strip().split(':')
+                if date == today:
                     query_counts[user] = int(count)
             return query_counts
     return {}
