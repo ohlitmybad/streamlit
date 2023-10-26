@@ -50,8 +50,8 @@ def is_query_limit_reached(username, query_counts, limit=DAILY_QUERY_LIMIT):
     return False
 
 
-st.set_page_config(page_title='DataMB Chat ⚽🗣️')
-st.title('DataMB Chat ⚽🗣️')
+st.set_page_config(page_title='DataMB Chat ⚽')
+st.title('DataMB Chat ⚽')
 
 def load_csv():
     df = pd.read_csv("data.csv")
