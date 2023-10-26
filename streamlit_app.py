@@ -13,7 +13,7 @@ USERS_FILE = 'users.txt'
 # Define a file to store user query counts
 QUERY_COUNT_FILE = 'query_counts.txt'
 
-DAILY_QUERY_LIMIT = 2
+DAILY_QUERY_LIMIT = 15
 
 def user_exists(username):
     with open(USERS_FILE, 'r') as users_file:
@@ -91,6 +91,6 @@ if user_exists(username):
             save_query_counts(query_counts)
 
     else:
-        st.error('Daily query limit (25) reached for this user.')
+        st.error('Daily query limit (15) reached for this user.')
 else:
     st.error('User not found. Please check your username.')
