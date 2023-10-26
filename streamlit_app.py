@@ -23,7 +23,6 @@ def user_exists(username):
                 return True
     return False
 
-
 def load_query_counts():
     if os.path.exists(QUERY_COUNT_FILE):
         with open(QUERY_COUNT_FILE, 'r') as count_file:
@@ -42,16 +41,12 @@ def save_query_counts(query_counts):
             for date, count in data.items():
                 count_file.write(f"{user}:{date}:{count}\n")
 
-
-
-
-
 def is_query_limit_reached(username, query_counts, limit=DAILY_QUERY_LIMIT):
     today = datetime.date.today().isoformat()
     user_data = query_counts.get(username, {})
     
-    if 'date' in user_data and user_data['date'] == today:
-        return user_data.get('count', 0) >= limit
+    if today in user_data:
+        return user_data[today] >= limit
     return False
 
 
