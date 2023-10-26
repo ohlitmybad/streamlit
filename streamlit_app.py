@@ -41,7 +41,7 @@ def save_query_counts(query_counts):
             count_file.write(f"{user}:{count}\n")
 
 # Function to check if a user has reached their query limit
-def is_query_limit_reached(username, query_counts, limit=2):
+def is_query_limit_reached(username, query_counts, limit=25):
     return query_counts.get(username, 0) >= limit
 
 st.set_page_config(page_title='DataMB Chat ⚽')
@@ -82,6 +82,6 @@ if authenticate_user(username, password):
             query_counts[username] = query_counts.get(username, 0) + 1
             save_query_counts(query_counts)
     else:
-        st.error('Query limit (10 successful queries per day) reached for this user.')
+        st.error('Query limit (25 successful queries per day) reached for this user.')
 else:
     st.error('Authentication failed. Please check your credentials.')
