@@ -32,18 +32,18 @@ def load_query_counts():
                 parts = line.strip().split(':')
                 if len(parts) == 3:
                     user, date, count = parts
-                    if date == today:
-                        query_counts[user] = {'date': date, 'count': int(count)}
+                    if user not in query_counts:
+                        query_counts[user] = {}
+                    query_counts[user][date] = int(count)
             return query_counts
     return {}
-
 
 def save_query_counts(query_counts):
     with open(QUERY_COUNT_FILE, 'w') as count_file:
         today = datetime.date.today().isoformat()
-        for user, user_data in query_counts.items():
-            if user_data['date'] == today:
-                count_file.write(f"{user}:{today}:{user_data['count']}\n")
+        for user, data in query_counts.items():
+            for date, count in data.items():
+                count_file.write(f"{user}:{date}:{count}\n")
 
 
 def is_query_limit_reached(username, query_counts, limit=DAILY_QUERY_LIMIT):
