@@ -75,7 +75,7 @@ OPAK_KEY = "QOxvASrYaXeRFFHgajIdT3BlbkFJkQ37OFVOZVOc8t07WJI5"
 openai_api_key = "sk-" + OPAK_KEY
 
 username = st.text_input('Username:')
-query_text = st.text_input('Enter your query:', placeholder='Enter query here ...')
+query_text = st.text_input('', placeholder='Enter query here ...')
 
 query_counts = load_query_counts()
 
