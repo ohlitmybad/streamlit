@@ -82,13 +82,14 @@ query_counts = load_query_counts()
 if user_exists(username):
     if not is_query_limit_reached(username, query_counts):
         st.header('Output')
-        if generate_response(query_text):
+        with st.spinner('Processing your request...'):
+            if generate_response(query_text):
     # Only increment the count if the query was successful
-            user_data = query_counts.get(username, {})
-            today = datetime.date.today().isoformat()
-            user_data[today] = user_data.get(today, 0) + 1
-            query_counts[username] = user_data
-            save_query_counts(query_counts)
+                user_data = query_counts.get(username, {})
+                today = datetime.date.today().isoformat()
+                user_data[today] = user_data.get(today, 0) + 1
+                query_counts[username] = user_data
+                save_query_counts(query_counts)
 
     else:
         st.error('Daily query limit (15) reached for this user.')
