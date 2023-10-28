@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import os
 from langchain.chat_models import ChatOpenAI
-from langchain_experimental.agents.create_pandas_dataframe_agent
+from langchain_experimental.agents import langchain_experimental.agents.create_pandas_dataframe_agent
 from langchain.agents.agent_types import AgentType
 import datetime
 from streamlit import spinner as st_spinner
