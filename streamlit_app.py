@@ -73,8 +73,8 @@ def generate_response(input_query):
         st.error('Query execution failed.')
         return False
 
-OPAK_KEY = "QOxvASrYaXeRFFHgajIdT3BlbkFJkQ37OFVOZVOc8t07WJI5"
-openai_api_key = "sk-" + OPAK_KEY
+DATA_MB = "QOxvASrYaXeRFFHgajIdT3BlbkFJkQ37OFVOZVOc8t07WJI5"
+openai_api_key = "sk-" + DATA_MB
 
 username = st.text_input('', placeholder='Username')
 query_text = st.text_input('', placeholder='Enter query here ...')
