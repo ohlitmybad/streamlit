@@ -94,6 +94,6 @@ if user_exists(username):
                 save_query_counts(query_counts)
 
     else:
-        st.error('Daily query limit (15) reached for this user.')
+        st.error('Daily query limit (10) reached for this user.')
 else:
-    st.error('User not found. Please check your username.')
+    st.error('User not found. Check your username in your DataMB Pro account.')
