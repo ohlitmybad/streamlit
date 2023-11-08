@@ -1,5 +1,5 @@
 streamlit>=1.26.0
-openai>=1.1.1
+openai==0.27.0
 langchain
 pandas
 tabulate
