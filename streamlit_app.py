@@ -73,7 +73,7 @@ def generate_response(input_query):
         st.error('Query execution failed.')
         return False
 
-DATA_MB = "QOxvASrYaXeRFFHgajIdT3BlbkFJkQ37OFVOZVOc8t07WJI5"
+DATA_MB = "GP2vIp52sWTQSAjFtAxyT3BlbkFJnjQ8jGP8eflYjYHJuTSh"
 openai_api_key = "sk-" + DATA_MB
 
 username = st.text_input('', placeholder='Username')
