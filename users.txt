@@ -98,3 +98,4 @@ ftblnl:0
 AJAnalysis:0
 AlexGoldberg:0
 htomufc:0
+FootballTalentScout:0
