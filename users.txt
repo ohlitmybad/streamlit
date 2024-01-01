@@ -116,3 +116,5 @@ Bandr:0
 Azizbpl:0
 Joey1009:0
 ZK1919:0
+trimag16:0
+laziale:0
