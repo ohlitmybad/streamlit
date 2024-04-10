@@ -65,6 +65,7 @@ def generate_response(input_query):
     df = load_csv()
     # Create Pandas DataFrame Agent
     agent = create_pandas_dataframe_agent(llm, df, verbose=True, agent_type=AgentType.OPENAI_FUNCTIONS)
+    input_query = input_query.replace("POSS+/-", "((Interceptions per 90 + Sliding tackles per 90 + (Defensive duels per 90 * Defensive duels won, % / 100)) * ((Passes per 90 + Offensive duels per 90)/100) - (((100 - Accurate passes, %)*(Passes per 90 / 100)+(100 - Offensive duels won, %)*(Offensive duels per 90 / 100)) * (100/(Passes per 90 + Offensive duels per 90))))")
     # Perform Query using the Agent
     response = agent.run(input_query)
     if response:
@@ -83,8 +84,6 @@ query_text = st.text_input('', placeholder='Enter query here ...')
 
 query_counts = load_query_counts()
 
-def replace_poss_formula(input_query):
-    return input_query.replace("POSS+/-", "(Interceptions per 90 + Sliding tackles per 90 + (Defensive duels per 90 * Defensive duels won, % / 100)) * ((Passes per 90 + Offensive duels per 90)/100) - (((100 - Accurate passes, %)*(Passes per 90 / 100)+(100 - Offensive duels won, %)*(Offensive duels per 90 / 100)) * (100/(Passes per 90 + Offensive duels per 90)))")
 
 
 if user_exists(username):
