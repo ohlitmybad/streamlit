@@ -83,6 +83,10 @@ query_text = st.text_input('', placeholder='Enter query here ...')
 
 query_counts = load_query_counts()
 
+def replace_poss_formula(input_query):
+    return input_query.replace("POSS+/-", "(Interceptions per 90 + Sliding tackles per 90 + (Defensive duels per 90 * Defensive duels won, % / 100)) * ((Passes per 90 + Offensive duels per 90)/100) - (((100 - Accurate passes, %)*(Passes per 90 / 100)+(100 - Offensive duels won, %)*(Offensive duels per 90 / 100)) * (100/(Passes per 90 + Offensive duels per 90)))")
+
+
 if user_exists(username):
     if not is_query_limit_reached(username, query_counts):
         st.header('Output')
