@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv,find_dotenv
-load_dotenv(find_dotenv())import streamlit as st
+load_dotenv(find_dotenv())
+import streamlit as st
 import pandas as pd
 import base64
 from langchain.chat_models import ChatOpenAI
