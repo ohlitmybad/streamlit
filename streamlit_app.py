@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import os
 import base64
-import creds
 from langchain.chat_models import ChatOpenAI
 from langchain_experimental.agents.agent_toolkits.pandas.base import (
     create_pandas_dataframe_agent,
