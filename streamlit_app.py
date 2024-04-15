@@ -9,13 +9,9 @@ from langchain_experimental.agents.agent_toolkits.pandas.base import (
 from langchain.agents.agent_types import AgentType
 import datetime
 from streamlit import spinner as st_spinner
-from dotenv import load_dotenv
-
-# Load environment variables from .env file
-load_dotenv()
-
-# Access the OPENAI_API_KEY environment variable
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+import openai
+ 
+openai.api_key = os.environ["OPENAI_API_KEY"]
 
 USERS_FILE = 'users.txt'
 
@@ -69,7 +65,7 @@ def load_csv():
     return df
 
 def generate_response(input_query):
-    llm = ChatOpenAI(model_name='gpt-3.5-turbo-0125', temperature=0, openai_api_key=OPENAI_API_KEY)
+    llm = ChatOpenAI(model_name='gpt-3.5-turbo-0125', temperature=0, openai_api_key=openai.api_key)
     df = load_csv()
     # Create Pandas DataFrame Agent
     agent = create_pandas_dataframe_agent(llm, df, verbose=True, agent_type=AgentType.OPENAI_FUNCTIONS)
