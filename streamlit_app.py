@@ -11,7 +11,12 @@ from langchain.agents.agent_types import AgentType
 import datetime
 from streamlit import spinner as st_spinner
 
-load_dotenv()
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Load environment variables from .env file in the same directory as the script
+load_dotenv(os.path.join(script_dir, '.env'))
+
+# Access the OPENAI_API_KEY environment variable
 openai_api_key = os.getenv('OPENAI_API_KEY')
 
 
