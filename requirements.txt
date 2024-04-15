@@ -6,3 +6,4 @@ tabulate
 matplotlib
 seaborn
 langchain_experimental
+dotenv
