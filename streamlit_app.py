@@ -16,7 +16,7 @@ import os
 load_dotenv()
 
  
-openai.api_key = os.["OPENAI_API_KEY"]
+openai.api_key = os.environ["OPENAI_API_KEY"]
 
 USERS_FILE = 'users.txt'
 
