@@ -14,11 +14,11 @@ from streamlit import spinner as st_spinner
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Load environment variables from .env file in the same directory as the script
-load_dotenv(os.path.join(script_dir, '.env'))
+dotenv_path = os.path.join(script_dir, '.env')
+load_dotenv(dotenv_path)
 
 # Access the OPENAI_API_KEY environment variable
 openai_api_key = os.getenv('OPENAI_API_KEY')
-
 
 # Define the path to the users.txt file
 USERS_FILE = 'users.txt'
