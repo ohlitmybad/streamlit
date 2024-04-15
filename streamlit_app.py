@@ -59,7 +59,7 @@ def is_query_limit_reached(username, query_counts, limit=DAILY_QUERY_LIMIT):
 st.set_page_config(page_title='DataMB Chat ⚽')
 st.title('DataMB Chat ⚽')
 
-OPENAI_API_KEY = os.getenv("API_KEY")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 def load_csv():
     df = pd.read_csv("data.csv")
