@@ -1,4 +1,3 @@
-import os
 import streamlit as st
 import pandas as pd
 import base64
@@ -10,6 +9,12 @@ from langchain.agents.agent_types import AgentType
 import datetime
 from streamlit import spinner as st_spinner
 import openai
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
+
  
 openai.api_key = os.environ["OPENAI_API_KEY"]
 
