@@ -13,8 +13,7 @@ from dotenv import load_dotenv
 import os
 
 # Specify the relative path to your .env file
-dotenv_path = ".env"
-load_dotenv(dotenv_path)
+load_dotenv()
 
 # Now you should be able to access the environment variable
 OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
