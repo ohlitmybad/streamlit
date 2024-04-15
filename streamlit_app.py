@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import os
+from dotenv import load_dotenv
 import base64
 from langchain.chat_models import ChatOpenAI
 from langchain_experimental.agents.agent_toolkits.pandas.base import (
@@ -9,6 +10,10 @@ from langchain_experimental.agents.agent_toolkits.pandas.base import (
 from langchain.agents.agent_types import AgentType
 import datetime
 from streamlit import spinner as st_spinner
+
+load_dotenv()
+openai_api_key = os.getenv('OPENAI_API_KEY')
+
 
 # Define the path to the users.txt file
 USERS_FILE = 'users.txt'
@@ -61,7 +66,7 @@ def load_csv():
     return df
 
 def generate_response(input_query):
-    llm = ChatOpenAI(model_name='gpt-3.5-turbo-0125', temperature=0, openai_api_key=dHVwdXB1cHVkdWN1)
+    llm = ChatOpenAI(model_name='gpt-3.5-turbo-0125', temperature=0, openai_api_key=openai_api_key)
     df = load_csv()
     # Create Pandas DataFrame Agent
     agent = create_pandas_dataframe_agent(llm, df, verbose=True, agent_type=AgentType.OPENAI_FUNCTIONS)
@@ -75,9 +80,7 @@ def generate_response(input_query):
         st.error('Query execution failed.')
         return False
 
-DATA_MB = "ZnhwbmR1bGNOZ2VZUDEwRWJaelVUM0JsYmtGSkhrWFFKTGEwU3J1WmsydjFuWFFn"
-amVwdXB1cGF0dXB1 = base64.b64decode(DATA_MB).decode('utf-8')
-dHVwdXB1cHVkdWN1 = "sk-" + amVwdXB1cGF0dXB1
+
 
 username = st.text_input('', placeholder='Username')
 query_text = st.text_input('', placeholder='Enter query here ...')
