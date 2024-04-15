@@ -13,7 +13,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Define the path to the users.txt file
 USERS_FILE = 'users.txt'
 
 # Define a file to store user query counts
