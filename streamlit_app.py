@@ -1,6 +1,4 @@
 import os
-from dotenv import load_dotenv,find_dotenv
-load_dotenv(find_dotenv())
 import streamlit as st
 import pandas as pd
 import base64
@@ -11,6 +9,14 @@ from langchain_experimental.agents.agent_toolkits.pandas.base import (
 from langchain.agents.agent_types import AgentType
 import datetime
 from streamlit import spinner as st_spinner
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Access the OPENAI_API_KEY environment variable
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 USERS_FILE = 'users.txt'
 
@@ -57,7 +63,6 @@ def is_query_limit_reached(username, query_counts, limit=DAILY_QUERY_LIMIT):
 st.set_page_config(page_title='DataMB Chat ⚽')
 st.title('DataMB Chat ⚽')
 
-OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 
 
 def load_csv():
