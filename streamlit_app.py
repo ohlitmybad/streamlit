@@ -13,11 +13,10 @@ from dotenv import load_dotenv
 import os
 
 # Specify the relative path to your .env file
-dotenv_path = ".env"
-load_dotenv(dotenv_path)
+load_dotenv()
 
 # Now you should be able to access the environment variable
-OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
+OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
 
 USERS_FILE = 'users.txt'
 
