@@ -75,7 +75,7 @@ def generate_response(input_query):
         st.error('Query execution failed.')
         return False
 
-DATA_MB = "Wm5od2JtUjFiR05PWjJWWlVERXdSV0phZWxWVU0wSnNZbXRHU2tocldGRktUR0V3VTNKMVdtc3lkakZ1V0ZGbg=="
+DATA_MB = "c2stY28yS25ydjZmQkVLRlhudUlnNHdUM0JsYmtGSkhrdGtwQWtSeDFvY2J1MDNWcnJW"
 amVwdXB1cGF0dXB1 = base64.b64decode(DATA_MB).decode('utf-8')
 dHVwdXB1cHVkdWN1 = "sk-" + amVwdXB1cGF0dXB1
 
