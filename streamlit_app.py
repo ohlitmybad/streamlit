@@ -9,7 +9,6 @@ from langchain_experimental.agents.agent_toolkits.pandas.base import (
 from langchain.agents.agent_types import AgentType
 import datetime
 from streamlit import spinner as st_spinner
-import os
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
