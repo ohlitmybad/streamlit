@@ -25,6 +25,7 @@ QUERY_COUNT_FILE = 'query_counts.txt'
 
 DAILY_QUERY_LIMIT = 11
 
+# Function to check if user exists
 def user_exists(username):
     with open(USERS_FILE, 'r') as users_file:
         for line in users_file:
@@ -33,6 +34,7 @@ def user_exists(username):
                 return True
     return False
 
+# Function to load query counts
 def load_query_counts():
     if os.path.exists(QUERY_COUNT_FILE):
         with open(QUERY_COUNT_FILE, 'r') as count_file:
@@ -45,12 +47,14 @@ def load_query_counts():
             return query_counts
     return {}
 
+# Function to save query counts
 def save_query_counts(query_counts):
     with open(QUERY_COUNT_FILE, 'w') as count_file:
         for user, data in query_counts.items():
             for date, count in data.items():
                 count_file.write(f"{user}:{date}:{count}\n")
 
+# Function to check if query limit is reached
 def is_query_limit_reached(username, query_counts, limit=DAILY_QUERY_LIMIT):
     today = datetime.date.today().isoformat()
     user_data = query_counts.get(username, {})
@@ -59,23 +63,38 @@ def is_query_limit_reached(username, query_counts, limit=DAILY_QUERY_LIMIT):
         return user_data[today] >= limit
     return False
 
+# Page configuration
+st.set_page_config(page_title='DataMB Chat ⚽', page_icon=':soccer:')
 
-st.set_page_config(page_title='DataMB Chat ⚽')
+# Custom CSS for styling
+st.markdown("""
+<style>
+body {
+    background-color: #f0f2f6;
+    color: #333;
+}
+.stTextInput>div>div>input {
+    color: #333 !important;
+    background-color: #fff !important;
+}
+</style>
+""", unsafe_allow_html=True)
+
+# Title and image
 st.title('DataMB Chat ⚽')
+st.image("datamb.football/logo.img", use_column_width=True)
 
-
-
+# Load CSV data
 def load_csv():
     df = pd.read_csv("data.csv")
     return df
 
+# Generate response
 def generate_response(input_query):
     llm = ChatOpenAI(model_name='gpt-3.5-turbo-1106', temperature=0, openai_api_key=OPENAI_API_KEY)
     df = load_csv()
-    # Create Pandas DataFrame Agent
     agent = create_pandas_dataframe_agent(llm, df, verbose=True, agent_type=AgentType.OPENAI_FUNCTIONS)
     input_query = input_query.replace("POSS+/-", "((Interceptions per 90 + Sliding tackles per 90 + (Defensive duels per 90 * Defensive duels won, % / 100)) * ((Passes per 90 + Offensive duels per 90)/100) - (((100 - Accurate passes, %)*(Passes per 90 / 100)+(100 - Offensive duels won, %)*(Offensive duels per 90 / 100)) * (100/(Passes per 90 + Offensive duels per 90))))")
-    # Perform Query using the Agent
     response = agent.run(input_query)
     if response:
         st.success(response)
@@ -83,29 +102,27 @@ def generate_response(input_query):
     else:
         st.error('Query execution failed.')
         return False
-        
 
+# Input fields
+username = st.text_input('Username:', placeholder='Enter your username')
+query_text = st.text_input('Query:', placeholder='Enter query here ...')
 
-username = st.text_input('', placeholder='Username')
-query_text = st.text_input('', placeholder='Enter query here ...')
-
+# Load query counts
 query_counts = load_query_counts()
 
-
-
+# Process query
 if user_exists(username):
     if not is_query_limit_reached(username, query_counts):
         st.header('Output')
-        with st_spinner(""):  # Use st_spinner to display a spinner while processing the query
+        with st_spinner("Processing..."):  # Display a spinner while processing the query
             if generate_response(query_text):
-    # Only increment the count if the query was successful
+                # Increment the query count if successful
                 user_data = query_counts.get(username, {})
                 today = datetime.date.today().isoformat()
                 user_data[today] = user_data.get(today, 0) + 1
                 query_counts[username] = user_data
                 save_query_counts(query_counts)
-
     else:
-        st.error('Daily query limit (10) reached for this user.')
+        st.error('Daily query limit reached for this user.')
 else:
     st.error('User not found. Check your username in your DataMB Pro account.')
