@@ -72,7 +72,7 @@ st.markdown("""
         color: #FFFFFF;
     }
         .stText {
-        font-size: 18px;
+        font-size: 40px;
         color: #FF0000; /* Change to your desired text color */
     }
     </style>
