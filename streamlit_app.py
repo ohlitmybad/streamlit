@@ -71,10 +71,10 @@ st.markdown(
     f'<div style="text-align:center;"><img src="https://datamb.football/logochat.png" width="50"></div>',
     unsafe_allow_html=True
 )
-# Title and image
-st.image("https://datamb.football/logochat.png", width=50)
-st.title('DataMB Chat ⚽')
-
+st.markdown(
+    '<h1 style="text-align: center;">DataMB Chat</h1>',
+    unsafe_allow_html=True
+)
 # Load CSV data
 def load_csv():
     df = pd.read_csv("data.csv")
