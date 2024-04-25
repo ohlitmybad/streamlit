@@ -63,22 +63,14 @@ def is_query_limit_reached(username, query_counts, limit=DAILY_QUERY_LIMIT):
         return user_data[today] >= limit
     return False
 
-# Page configuration
-st.set_page_config(page_title='DataMB Chat ⚽', page_icon=':soccer:')
 
-# Custom CSS for styling
+st.set_page_config(page_title="DataMB Chat", page_icon="", layout="wide", initial_sidebar_state="expanded", theme="dark")
+
+# Centering the image horizontally
 st.markdown(
-    """
-    <style>
-    .reportview-container {
-        background: #1E1E1E;
-        color: white;
-    }
-    </style>
-    """,
+    f'<div style="text-align:center;"><img src="https://datamb.football/logochat.png" width="50"></div>',
     unsafe_allow_html=True
 )
-
 # Title and image
 st.image("https://datamb.football/logochat.png", width=50)
 st.title('DataMB Chat ⚽')
