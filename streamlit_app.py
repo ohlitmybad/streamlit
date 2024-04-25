@@ -81,7 +81,7 @@ body {
 """, unsafe_allow_html=True)
 
 # Title and image
-st.image("https://datamb.football/logochat.png", use_column_width=True)
+st.image("https://datamb.football/logochat.png", width='auto')
 st.title('DataMB Chat ⚽')
 
 # Load CSV data
