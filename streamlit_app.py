@@ -113,7 +113,7 @@ query_counts = load_query_counts()
 # Process query
 if user_exists(username):
     if not is_query_limit_reached(username, query_counts):
-        st.header('Output')
+        st.header('')
         with st_spinner("Processing..."):  # Display a spinner while processing the query
             if generate_response(query_text):
                 # Increment the query count if successful
