@@ -68,7 +68,7 @@ st.set_page_config(page_title="DataMB Chat")
 st.markdown("""
     <style>
     .stApp {
-        background-color: #756e6e;
+        background-color: #FFFFFF;
         color: #FFFFFF;
     }
     </style>
