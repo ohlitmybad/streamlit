@@ -71,10 +71,6 @@ st.markdown("""
         background-color: #000000;
         color: #FFFFFF;
     }
-    .stOutput {
-        font-size: 48px;
-        color: #FF0000; /* Change to your desired text color */
-    }
     </style>
     """, unsafe_allow_html=True)
 
