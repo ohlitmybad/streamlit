@@ -67,18 +67,17 @@ def is_query_limit_reached(username, query_counts, limit=DAILY_QUERY_LIMIT):
 st.set_page_config(page_title='DataMB Chat ⚽', page_icon=':soccer:')
 
 # Custom CSS for styling
-st.markdown("""
-<style>
-body {
-    background-color: #f0f2f6;
-    color: #333;
-}
-.stTextInput>div>div>input {
-    color: #333 !important;
-    background-color: #fff !important;
-}
-</style>
-""", unsafe_allow_html=True)
+st.markdown(
+    """
+    <style>
+    .reportview-container {
+        background: #1E1E1E;
+        color: white;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 # Title and image
 st.image("https://datamb.football/logochat.png", width=50)
@@ -104,8 +103,8 @@ def generate_response(input_query):
         return False
 
 # Input fields
-username = st.text_input('Username:', placeholder='Enter your username')
-query_text = st.text_input('Query:', placeholder='Enter query here ...')
+username = st.text_input('', placeholder='Enter your username')
+query_text = st.text_input('', placeholder='Enter query here ...')
 
 # Load query counts
 query_counts = load_query_counts()
