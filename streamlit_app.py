@@ -63,7 +63,7 @@ def is_query_limit_reached(username, query_counts, limit=DAILY_QUERY_LIMIT):
         return user_data[today] >= limit
     return False
 
-st.set_page_config(page_title="DataMB Chat", layout="wide", initial_sidebar_state="collapsed", theme="dark")
+st.set_page_config(page_title="DataMB Chat")
 
 # Centering the image horizontally
 st.markdown(
