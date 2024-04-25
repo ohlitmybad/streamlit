@@ -65,6 +65,15 @@ def is_query_limit_reached(username, query_counts, limit=DAILY_QUERY_LIMIT):
 
 st.set_page_config(page_title="DataMB Chat")
 
+st.markdown("""
+    <style>
+    .stApp {
+        background-color: #303030;
+        color: #FFFFFF;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
 
 # Centering the image horizontally
 st.markdown(
