@@ -95,6 +95,7 @@ def generate_response(input_query):
     df = load_csv()
     agent = create_pandas_dataframe_agent(llm, df, verbose=True, agent_type=AgentType.OPENAI_FUNCTIONS)
     input_query = input_query + " handle_parsing_errors=True"
+    input_query = input_query.replace("Premier League", ""Premier League"")    
     input_query = input_query.replace("POSS+/-", "((Interceptions per 90 + Sliding tackles per 90 + (Defensive duels per 90 * Defensive duels won, % / 100)) * ((Passes per 90 + Offensive duels per 90)/100) - (((100 - Accurate passes, %)*(Passes per 90 / 100)+(100 - Offensive duels won, %)*(Offensive duels per 90 / 100)) * (100/(Passes per 90 + Offensive duels per 90))))")
     response = agent.run(input_query)
     if response:
