@@ -1,6 +1,11 @@
 ohlitmybad:0
 OpaToivonen:0
 Jwftbl:0
+salut1:0
+salut2:0
+salut3:0
+salut4:0
+salut5:0
 Ollie Spencer:0
 TylahTalkz:0
 Rossmci88:0
