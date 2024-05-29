@@ -246,3 +246,4 @@ Kikachi:0
 McNair10:0
 filippomarino200:0
 Polma:0
+Ryogo:0
