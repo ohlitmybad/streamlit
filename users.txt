@@ -234,3 +234,4 @@ Nolimits16423:0
 IKECARRERA:0
 tsubasa:0
 Wysboo:0
+Kikachi:0
