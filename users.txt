@@ -218,3 +218,4 @@ tsubasa:0
 Wysboo:0
 Ryogo:0
 Nolimits16423:0
+IKECARRERA:0
