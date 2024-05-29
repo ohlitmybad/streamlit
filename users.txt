@@ -252,3 +252,4 @@ IKECARRERA:0
 tsubasa:0
 Wysboo:0
 Kikachi:0
+McNair10:0
