@@ -12,6 +12,8 @@ import openai
 from dotenv import load_dotenv
 import os
 
+allow_dangerous_code=True
+
 # Specify the relative path to your .env file
 load_dotenv()
 
