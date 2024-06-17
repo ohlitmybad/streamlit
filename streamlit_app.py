@@ -2,9 +2,7 @@ import streamlit as st
 import pandas as pd
 import base64
 from langchain.chat_models import ChatOpenAI
-from langchain_experimental.agents.agent_toolkits.pandas.base import (
-    create_pandas_dataframe_agent,
-)
+from langchain_experimental.agents.agent_toolkits.pandas.base import create_pandas_dataframe_agent
 from langchain.agents.agent_types import AgentType
 import datetime
 from streamlit import spinner as st_spinner
@@ -99,7 +97,7 @@ def generate_response(input_query):
     
     # Ensure dangerous code execution is allowed
     if allow_dangerous_code:
-        agent = create_pandas_dataframe_agent(llm, df, verbose=True, agent_type=AgentType.OPENAI_FUNCTIONS)
+        agent = create_pandas_dataframe_agent(llm, df, verbose=True, agent_type=AgentType.OPENAI_FUNCTIONS, allow_dangerous_code=allow_dangerous_code)
         input_query = input_query + " handle_parsing_errors=True"
         input_query = input_query.replace("Premier League", "'Premier League'")    
         input_query = input_query.replace("POSS+/-", "((Interceptions per 90 + Sliding tackles per 90 + (Defensive duels per 90 * Defensive duels won, % / 100)) * ((Passes per 90 + Offensive duels per 90)/100) - (((100 - Accurate passes, %)*(Passes per 90 / 100)+(100 - Offensive duels won, %)*(Offensive duels per 90 / 100)) * (100/(Passes per 90 + Offensive duels per 90))))")
