@@ -361,3 +361,4 @@ galginyo:0
 pupu2:0
 theodor:0
 theodor:0
+lepetitjoueur:0
