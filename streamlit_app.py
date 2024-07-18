@@ -9,6 +9,7 @@ from streamlit import spinner as st_spinner
 import openai
 from dotenv import load_dotenv
 import os
+import time
 
 # Set the dangerous code execution flag
 allow_dangerous_code = True
@@ -136,3 +137,19 @@ if user_exists(username):
 else:
     st.error('User not found. Check your username in your DataMB Pro account.')
 
+file_path = 'users.txt'
+
+# Function to get the last modified time of the file
+def get_file_last_modified_time(path):
+    return os.path.getmtime(path)
+
+# Initialize the last modified time
+if 'last_modified_time' not in st.session_state:
+    st.session_state.last_modified_time = get_file_last_modified_time(file_path)
+
+# Monitor the file
+current_modified_time = get_file_last_modified_time(file_path)
+
+if current_modified_time != st.session_state.last_modified_time:
+    st.session_state.last_modified_time = current_modified_time
+    st.experimental_rerun()
