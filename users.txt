@@ -369,3 +369,4 @@ WhoGabigol:0
 WhoGabigol:0
 dotadola:0
 Chrismillar:0
+silver:0
