@@ -531,3 +531,4 @@ lilan127:0
 LUFCLivin:0
 SumanDark8600:0
 WshLuffy:0
+NathanStannard:0
