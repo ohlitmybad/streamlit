@@ -653,3 +653,4 @@ BarcaFutbol:0
 sroyus:0
 krszvr:0
 Chris WM:0
+Jangseokju020406:0
