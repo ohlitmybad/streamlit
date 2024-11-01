@@ -669,3 +669,4 @@ AltEnding:0
 otdog:0
 melbriki:0
 ArturSilva:0
+nikola_vassilev:0
