@@ -106,7 +106,7 @@ Zacharie Geyer:0
 JackFawcett1704:0
 falhafez:0
 bikz12:0
-Ülker Ünalan:0
+?lker ?nalan:0
 josephbraillard:0
 Kwachs:0
 GoBirds187:0
@@ -118,7 +118,7 @@ Abs2202:0
 krzychuRuch:0
 edohere:0
 AKM:0
-Dilek Yiğit:0
+Dilek Yi?it:0
 Nic.cariglia:0
 wojnoski:0
 FcTactic_:0
@@ -240,7 +240,7 @@ MasterReed:0
 liibanaadan:0
 luca.masini@gmail.com:0
 Coach:0
-Mateo Franulić:0
+Mateo Franuli?:0
 Ludo1998:0
 benchcomm:0
 FahimFaisal:0
@@ -344,3 +344,4 @@ Hiraqo:0
 Cristian Ercolani:0
 all1892lfc:0
 fenix89:0
+juanlu020:0
