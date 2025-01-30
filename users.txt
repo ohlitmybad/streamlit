@@ -407,3 +407,4 @@ HAL:0
 LePoulain:0
 Schinni:0
 fmscoutscz:0
+theweekendscout:0
