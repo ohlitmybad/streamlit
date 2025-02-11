@@ -93,7 +93,7 @@ def load_csv():
 
 # Generate response
 def generate_response(input_query):
-    llm = ChatOpenAI(model_name='o3-mini', temperature=0, openai_api_key=OPENAI_API_KEY, model_kwargs={"reasoning_effort": "medium"})
+    llm = ChatOpenAI(model_name='gpt-4o-mini', temperature=0, openai_api_key=OPENAI_API_KEY)
     df = load_csv()
     
     # Ensure dangerous code execution is allowed
