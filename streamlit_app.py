@@ -114,7 +114,7 @@ def generate_response(input_query):
         return False
 
 # Input fields
-username = st.text_input('', placeholder='Enter your username')
+username = st.text_input('', placeholder='Username')
 query_text = st.text_input('', placeholder='Ask me anything... • 用中文提问 • اسأل بالعربية')
 
 # Load query counts
