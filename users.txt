@@ -831,3 +831,4 @@ rsg:0
 XVIJUV:0
 kado:0
 colizzo:0
+thanko32:0
