@@ -83,12 +83,12 @@ alrhemist:0
 Zacharie Geyer:0
 JackFawcett1704:0
 bikz12:0
-Ülker Ünalan:0
+?lker ?nalan:0
 YES SPORTS:0
 claudio_lopes_94@hotmail.com:0
 The Boy:0
 edohere:0
-Alp Arda Yiğit:0
+Alp Arda Yi?it:0
 Nic.cariglia:0
 wojnoski:0
 Nuno Moreira:0
@@ -332,7 +332,7 @@ ebpfplayer:0
 polido23:0
 trigo3:0
 stehmi:0
-Raúl:0
+Ra?l:0
 CFCLimitless:0
 OmobaPaul:0
 sihyun8959@naver.com:0
@@ -341,7 +341,7 @@ adom1up:0
 Emile:0
 Faybbe:0
 Walshpe15:0
-Miguel Veríssimo:0
+Miguel Ver?ssimo:0
 Laurent:0
 Davidsilva:0
 califf123:0
@@ -390,7 +390,7 @@ MDeantoni:0
 Well_Informed:0
 atlantisfootball:0
 luke.johnson2210@gmail.com:0
-Tuncay yıldız:0
+Tuncay y?ld?z:0
 ryanscottwelsh@gmail.com:0
 Nlf1886:0
 bruno.francisco:0
@@ -426,7 +426,7 @@ Will.rees10:0
 clabbers:0
 castrojr:0
 LePetitOM:0
-Uğur Karakullukcu:0
+U?ur Karakullukcu:0
 MM_SPORTS:0
 Isostar23:0
 zhirk:0
@@ -446,13 +446,13 @@ datambMiguel:0
 FrankFarian:0
 johncleese:0
 oddalerts:0
-KaanAçıkalın:0
+KaanA??kal?n:0
 canb:0
 Panenka_:0
 Safademirci7:0
 bds215:0
 TomRaimbault:0
-Nadir Fatih Özmen:0
+Nadir Fatih ?zmen:0
 FootyDiamonds:0
 AlfonsoHS:0
 fbinjamil:0
@@ -469,12 +469,12 @@ AKE1701:0
 TunaYurdakul:0
 Elishafanz:0
 Tomsk15:0
-Hüseyin Karakurt:0
+H?seyin Karakurt:0
 berk@bnstechs.com:0
 Pudas:0
 Michelangelo:0
-Mehmet Oğuzhan Koblay:0
-Mehmet Oğuzhan Koblay:0
+Mehmet O?uzhan Koblay:0
+Mehmet O?uzhan Koblay:0
 burakiniho61:0
 ohlitmybad:0
 czechfant:0
@@ -533,7 +533,7 @@ EdoardoCorsini:0
 Mehmet Caner Kahraman:0
 NamelessBasque:0
 Olof:0
-TALAT ERDEM GÜNEŞ:0
+TALAT ERDEM G?NE?:0
 hayatovidis@gmail.com:0
 TheoMit23:0
 Pabloojas93:0
@@ -565,18 +565,18 @@ Simone21:0
 Haydar Yavuz Altop:0
 giuliosori:0
 Ka.sukhv@gmail.com:0
-SÜLEYMAN AKTÜRK:0
+S?LEYMAN AKT?RK:0
 Scott Hadley:0
 Mineo94:0
-MUSTAFA AYDIN BAŞAR:0
+MUSTAFA AYDIN BA?AR:0
 Andrew Neil:0
 jordantb02:0
 thisissge2000:0
 CapitanoChris:0
 Xuuteiras:0
 davidmag03:0
-İLYAS CEMRE BURAN:0
-Habib Yağız Demir:0
+?LYAS CEMRE BURAN:0
+Habib Ya??z Demir:0
 JP#10:0
 alexseniorr:0
 Amer:0
@@ -589,3 +589,4 @@ Darietto:0
 Ahmet Semih Avci:0
 zadboukh:0
 MOHAMAD EMAD:0
+Kevforristal1:0
